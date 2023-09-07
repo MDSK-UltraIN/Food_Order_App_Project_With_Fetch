@@ -21,7 +21,7 @@ const AvailableMeals = () => {
 
       const loadedMeals = [];
 
-      for (const key in responseData) {
+      Object.keys(responseData).forEach(key => {
         loadedMeals.push({
           id: key,
           name: responseData[key].name,
@@ -29,7 +29,7 @@ const AvailableMeals = () => {
           price: responseData[key].price,
 
         });
-      }
+      });
       setMeals(loadedMeals);
       setIsLoading(false);
     }
