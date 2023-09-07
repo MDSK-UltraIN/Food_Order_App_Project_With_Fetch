@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import classes from './Checkout.module.css';
+import clsx from 'clsx';
 
 
 const isEmpty = value => value.trim() === '';
@@ -54,10 +55,12 @@ const Checkout = (props) => {
     });
 
   };
-  const nameControlClasses = `${classes.control} ${formInputValidity.name ? '' : classes.invalid}`;
-  const streetControlClasses = `${classes.control} ${formInputValidity.street ? '' : classes.invalid}`;
-  const postalCodeControlClasses = `${classes.control} ${formInputValidity.postalCode ? '' : classes.invalid}`;
-  const cityCodeControlClasses = `${classes.control} ${formInputValidity.city ? '' : classes.invalid}`;
+  
+  const nameControlClasses = clsx(classes.control, !formInputValidity.name && classes.invalid);
+  const streetControlClasses = clsx(classes.control, !formInputValidity.street && classes.invalid);
+  const postalCodeControlClasses = clsx(classes.control, !formInputValidity.postalCode && classes.invalid);
+  const cityCodeControlClasses = clsx(classes.control, !formInputValidity.city && classes.invalid);
+
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>

@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 import CartIcon from '../Cart/CartIcon';
 import CartContext from '../../store/cart-context';
@@ -14,7 +15,8 @@ const HeaderCartButton = (props) => {
     return curNumber + item.amount;
   }, 0);
 
-  const btnClasses = `${classes.button} ${btnIsHighlighted ? classes.bump : ''}`;
+  // const btnClasses = `${classes.button} ${btnIsHighlighted ? classes.bump : ''}`;
+  const btnClasses = clsx(classes.button, btnIsHighlighted && classes.bump);
 
   useEffect(() => {
     if (items.length === 0) {
