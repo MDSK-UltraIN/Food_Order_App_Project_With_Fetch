@@ -90,12 +90,16 @@ const Cart = (props) => {
     </>
   );
 
+  const showCartModalContent = !isSubmitting && !didSubmit && cartModalContent;
+  const showSubmittingModalContent = isSubmitting && isSubmittingModalContent;
+  const showDidSubmitModalContent = !isSubmitting && didSubmit && didSubmitModalContent
+
   return (
     <Modal onClose={props.onClose}>
 
-      {!isSubmitting && !didSubmit && cartModalContent}
-      {isSubmitting && isSubmittingModalContent}
-      {!isSubmitting && didSubmit && didSubmitModalContent}
+      {showCartModalContent}
+      {showSubmittingModalContent}
+      {showDidSubmitModalContent}
     </Modal>
   );
 };
